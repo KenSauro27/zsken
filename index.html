@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken's Life</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Ken's Life</div>
+        <ul class="nav-links">
+            <li data-target="home" class="active"><a href="#">Home</a><div class="triangle"></div></li>
+            <li data-target="about"><a href="#">About Me</a><div class="triangle"></div></li>
+            <li data-target="quotes"><a href="#">Quotes</a><div class="triangle"></div></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <div class="content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <h1>Welcome to Ken's Life</h1>
+            <p>Thank you for visiting my website! Here, you'll find everything about my journey, favorite quotes, and what makes life meaningful to me. Feel free to explore!</p>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section">
+            <h1>About Me</h1>
+            <p>Hi, I'm Ken! I'm passionate about living life to the fullest, learning new things, and sharing meaningful experiences. In my free time, I enjoy:</p>
+            <ul>
+                <li>Playing basketball</li>
+                <li>Watching movies</li>
+                <li>Cooking</li>
+                <li>Fanboying over my favorite groups like Aespa, Twice, and BINI</li>
+            </ul>
+            <p>Here's where you'll learn all about my story!</p>
+        </section>
+
+        <!-- Quotes Section -->
+        <section id="quotes" class="section">
+            <h1>Quote</h1>
+            <div class="quote-content">
+                <p>"Que sera sera. Whatever happens, happens."</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-links li');
+        const sections = document.querySelectorAll('.section');
+
+        // Initially hide all sections
+        sections.forEach(section => section.style.display = 'none');
+
+        // Set the first section (Home) to be visible initially
+        document.getElementById('home').style.display = 'block';
+        document.getElementById('home').classList.add('active');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const targetId = event.target.closest('li').getAttribute('data-target');
+
+                // Hide all sections
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                    section.classList.remove('active');
+                });
+
+                // Show the clicked section
+                const targetSection = document.getElementById(targetId);
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+
+                // Update active class on navbar links
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                event.target.closest('li').classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
