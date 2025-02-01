@@ -1,0 +1,22 @@
+<!-- navbar.html -->
+const navbarHTML = `
+<nav class="navbar">
+    <div class="logo">Ken's Life</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#quotes">Quotes</a></li>
+    </ul>
+</nav>
+`;
+
+document.getElementById('navbar').innerHTML = navbarHTML;
+
+/* Highlight active link */
+const links = document.querySelectorAll('.nav-links a');
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+    });
+});
